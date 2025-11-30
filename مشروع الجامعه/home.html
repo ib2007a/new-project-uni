@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | FODOOL</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <a href="home.html" class="logo">FODOOL</a>
+        <nav class="navigation">
+            <a href="home.html" class="active">Home</a>
+            <a href="about page.html">About</a>
+            <a href="login.html">Sign In</a>
+            <a href="register.html">Sign Up</a>
+            <a href="contact.html">Contact</a>
+            <a href="spongebob_love.html">SpongeBob</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="page-header">
+            <h1 class="title">Historical Personalities</h1>
+            <div class="view-controls">
+                <button onclick="window.location.href='about page.html'" class="cta-btn"
+                    style="border-radius: 30px; padding: 10px 20px; font-size: 0.9rem; background: var(--primary-color); border: none; color: white;">About
+                    Us</button>
+                <button id="gridViewBtn" class="active" onclick="switchView('grid')"><i class="fas fa-th"></i> Grid
+                    View</button>
+                <button id="slideViewBtn" onclick="switchView('slide')"><i class="fas fa-images"></i> Slide
+                    View</button>
+            </div>
+        </div>
+
+        <div id="personalitiesContainer" class="personalities-grid">
+            <!-- 1. Albert Einstein -->
+            <div class="card" onclick="window.location.href='albert_einstein.html'" style="cursor: pointer;">
+                <div class="card-image">
+                    <img src="imges/personalities/albert_einstein.jpg" alt="Albert Einstein">
+                </div>
+                <div class="card-content">
+                    <h3>Albert Einstein</h3>
+                    <p>عالم فيزياء نظرية، واضع النظرية النسبية.</p>
+                </div>
+            </div>
+
+            <!-- 2. Isaac Newton -->
+            <div class="card" onclick="window.location.href='isaac_newton.html'" style="cursor: pointer;">
+                <div class="card-image">
+                    <img src="imges/personalities/isaac_newton.jpg" alt="Isaac Newton">
+                </div>
+                <div class="card-content">
+                    <h3>Isaac Newton</h3>
+                    <p>عالم فيزياء ورياضيات، مكتشف الجاذبية.</p>
+                </div>
+            </div>
+
+            <!-- 3. Marie Curie -->
+            <div class="card" onclick="window.location.href='marie_curie.html'" style="cursor: pointer;">
+                <div class="card-image">
+                    <img src="imges/personalities/marie_curie.jpg" alt="Marie Curie">
+                </div>
+                <div class="card-content">
+                    <h3>Marie Curie</h3>
+                    <p>عالمة فيزياء وكيمياء، رائدة في النشاط الإشعاعي.</p>
+                </div>
+            </div>
+
+            <!-- 4. Nikola Tesla -->
+            <div class="card" onclick="window.location.href='nikola_tesla.html'" style="cursor: pointer;">
+                <div class="card-image">
+                    <img src="imges/personalities/nikola_tesla.jpg" alt="Nikola Tesla">
+                </div>
+                <div class="card-content">
+                    <h3>Nikola Tesla</h3>
+                    <p>مخترع ومهندس، ساهم في تصميم نظام التيار المتردد.</p>
+                </div>
+            </div>
+
+            <!-- 5. Ibn Sina -->
+            <div class="card" onclick="window.location.href='ibn_sina.html'" style="cursor: pointer;">
+                <div class="card-image">
+                    <img src="imges/personalities/ibn_sina.jpg" alt="Ibn Sina">
+                </div>
+                <div class="card-content">
+                    <h3>Ibn Sina</h3>
+                    <p>عالم وطبيب مسلم، لقب بأمير الأطباء.</p>
+                </div>
+            </div>
+
+            <!-- 6. Al-Khwarizmi -->
+            <div class="card" onclick="window.location.href='al_khwarizmi.html'" style="cursor: pointer;">
+                <div class="card-image">
+                    <img src="imges/personalities/al_khwarizmi.jpg" alt="Al-Khwarizmi">
+                </div>
+                <div class="card-content">
+                    <h3>Al-Khwarizmi</h3>
+                    <p>عالم رياضيات، مؤسس علم الجبر.</p>
+                </div>
+            </div>
+
+            <!-- 7. Thomas Edison -->
+            <div class="card" onclick="window.location.href='thomas_edison.html'" style="cursor: pointer;">
+                <div class="card-image">
+                    <img src="imges/personalities/thomas_edison.jpg" alt="Thomas Edison">
+                </div>
+                <div class="card-content">
+                    <h3>Thomas Edison</h3>
+                    <p>مخترع ورجل أعمال، اخترع المصباح الكهربائي.</p>
+                </div>
+            </div>
+
+            <!-- 8. Leonardo da Vinci -->
+            <div class="card" onclick="window.location.href='leonardo_da_vinci.html'" style="cursor: pointer;">
+                <div class="card-image">
+                    <img src="imges/personalities/leonardo_da_vinci.jpg" alt="Leonardo da Vinci">
+                </div>
+                <div class="card-content">
+                    <h3>Leonardo da Vinci</h3>
+                    <p>رسام وعالم، رمز لعصر النهضة.</p>
+                </div>
+            </div>
+
+            <!-- 9. Steve Jobs -->
+            <div class="card" onclick="window.location.href='steve_jobs.html'" style="cursor: pointer;">
+                <div class="card-image">
+                    <img src="imges/personalities/steve_jobs.jpg" alt="Steve Jobs">
+                </div>
+                <div class="card-content">
+                    <h3>Steve Jobs</h3>
+                    <p>مؤسس شركة أبل، رائد في التكنولوجيا الشخصية.</p>
+                </div>
+            </div>
+
+            <!-- 10. Bill Gates -->
+            <div class="card" onclick="window.location.href='bill_gates.html'" style="cursor: pointer;">
+                <div class="card-image">
+                    <img src="imges/personalities/bill_gates.jpg" alt="Bill Gates">
+                </div>
+                <div class="card-content">
+                    <h3>Bill Gates</h3>
+                    <p>مؤسس مايكروسوفت، مبرمج ورجل أعمال.</p>
+                </div>
+            </div>
+
+            <!-- 11. Ahmed Zewail -->
+            <div class="card" onclick="window.location.href='ahmed_zewail.html'" style="cursor: pointer;">
+                <div class="card-image">
+                    <img src="imges/personalities/ahmed_zewail.jpg" alt="Ahmed Zewail">
+                </div>
+                <div class="card-content">
+                    <h3>Ahmed Zewail</h3>
+                    <p>عالم كيمياء مصري، حاصل على نوبل في الفيمتو ثانية.</p>
+                </div>
+            </div>
+
+            <!-- 12. Elon Musk -->
+            <div class="card" onclick="window.location.href='elon_musk.html'" style="cursor: pointer;">
+                <div class="card-image">
+                    <img src="imges/personalities/elon_musk.jpg" alt="Elon Musk">
+                </div>
+                <div class="card-content">
+                    <h3>Elon Musk</h3>
+                    <p>رائد أعمال، مؤسس تيسلا وسبيس إكس.</p>
+                </div>
+            </div>
+
+            <!-- 13. Mark Zuckerberg -->
+            <div class="card" onclick="window.location.href='mark_zuckerberg.html'" style="cursor: pointer;">
+                <div class="card-image">
+                    <img src="imges/personalities/mark_zuckerberg.jpg" alt="Mark Zuckerberg">
+                </div>
+                <div class="card-content">
+                    <h3>Mark Zuckerberg</h3>
+                    <p>مؤسس فيسبوك.</p>
+                </div>
+            </div>
+
+            <!-- 14. Ibn Al-Haytham -->
+            <div class="card" onclick="window.location.href='ibn_al_haytham.html'" style="cursor: pointer;">
+                <div class="card-image">
+                    <img src="imges/personalities/ibn_al_haytham.jpg" alt="Ibn Al-Haytham">
+                </div>
+                <div class="card-content">
+                    <h3>Ibn Al-Haytham</h3>
+                    <p>عالم بصريات، مؤسس المنهج العلمي.</p>
+                </div>
+            </div>
+
+            <!-- 15. Wright Brothers -->
+            <div class="card" onclick="window.location.href='wright_brothers.html'" style="cursor: pointer;">
+                <div class="card-image">
+                    <img src="imges/personalities/wright_brothers.jpg" alt="Wright Brothers">
+                </div>
+                <div class="card-content">
+                    <h3>Wright Brothers</h3>
+                    <p>مخترعا الطائرة.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slideshow Controls (Hidden in Grid View) -->
+        <div id="slideshowControls" class="slideshow-controls" style="display: none;">
+            <button onclick="moveSlide(-1)">&#10094;</button>
+            <button onclick="moveSlide(1)">&#10095;</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 FODOOL. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const container = document.getElementById('personalitiesContainer');
+        const cards = document.querySelectorAll('.card');
+        const gridBtn = document.getElementById('gridViewBtn');
+        const slideBtn = document.getElementById('slideViewBtn');
+        const controls = document.getElementById('slideshowControls');
+
+        function switchView(view) {
+            if (view === 'grid') {
+                container.classList.remove('personalities-slide');
+                container.classList.add('personalities-grid');
+                controls.style.display = 'none';
+                gridBtn.classList.add('active');
+                slideBtn.classList.remove('active');
+
+                // Reset styles for grid
+                cards.forEach(card => {
+                    card.style.display = 'flex'; // Or block/flex depending on CSS
+                    card.classList.remove('active-slide');
+                });
+            } else {
+                container.classList.remove('personalities-grid');
+                container.classList.add('personalities-slide');
+                controls.style.display = 'flex';
+                slideBtn.classList.add('active');
+                gridBtn.classList.remove('active');
+
+                showSlide(currentSlide);
+            }
+        }
+
+        function showSlide(n) {
+            if (n >= cards.length) currentSlide = 0;
+            if (n < 0) currentSlide = cards.length - 1;
+
+            cards.forEach((card, index) => {
+                if (index === currentSlide) {
+                    card.style.display = 'flex';
+                    card.classList.add('active-slide');
+                } else {
+                    card.style.display = 'none';
+                    card.classList.remove('active-slide');
+                }
+            });
+        }
+
+        function moveSlide(n) {
+            showSlide(currentSlide += n);
+        }
+    </script>
+</body>
+
+</html>
