@@ -104,6 +104,62 @@ app.post('/api/contact', (req, res) => {
     res.json({ success: true, message: 'Message sent successfully' });
 });
 
+// --- Admin Features ---
+
+const LOGINS_FILE = 'logins.json';
+const STATS_FILE = 'statistics.json';
+
+// Updated Login to track history
+app.post('/api/login', (req, res) => {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+        return res.status(400).json({ success: false, message: 'Email and password required' });
+    }
+
+    const users = readJSON(USERS_FILE);
+    const user = users.find(u => u.email === email && u.password === password);
+
+    if (user) {
+        // Record Login
+        const logins = readJSON(LOGINS_FILE);
+        logins.push({
+            email: user.email,
+            timestamp: new Date().toISOString()
+        });
+        writeJSON(LOGINS_FILE, logins);
+
+        res.json({ success: true, message: 'Login successful', user: { username: user.username, email: user.email } });
+    } else {
+        res.status(401).json({ success: false, message: 'Invalid credentials' });
+    }
+});
+
+// Track Visits
+app.post('/api/visit', (req, res) => {
+    let stats = readJSON(STATS_FILE);
+    if (!stats.visits) stats = { visits: 0 };
+
+    stats.visits += 1;
+    writeJSON(STATS_FILE, stats);
+
+    res.json({ success: true });
+});
+
+// Admin Data
+app.get('/api/admin/data', (req, res) => {
+    // In a real app, you would verify an admin token here!
+    const users = readJSON(USERS_FILE);
+    const logins = readJSON(LOGINS_FILE);
+    const stats = readJSON(STATS_FILE);
+
+    res.json({
+        users,
+        logins,
+        visits: stats.visits || 0
+    });
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
