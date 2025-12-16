@@ -8,8 +8,8 @@ const app = express();
 const PORT = 3000;
 
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 
 // Serve static files (HTML, CSS, JS, Images)
 app.use(express.static(path.join(__dirname)));
@@ -37,7 +37,7 @@ const MESSAGES_FILE = 'messages.json';
 
 // 1. Register User
 app.post('/api/register', (req, res) => {
-    const { username, email, password } = req.body;
+    const { username, email, password, image } = req.body;
 
     if (!username || !email || !password) {
         return res.status(400).json({ success: false, message: 'All fields are required' });
@@ -54,7 +54,8 @@ app.post('/api/register', (req, res) => {
         id: Date.now(),
         username,
         email,
-        password // Note: In a real app, hash this!
+        password, // Note: In a real app, hash this!
+        image: image || null
     };
 
     users.push(newUser);

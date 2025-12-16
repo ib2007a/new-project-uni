@@ -12,15 +12,48 @@
 <body>
     <header>
         <a href="home.html" class="logo">FODOOL</a>
-        <nav class="navigation">
+        <nav class="navigation" id="nav-menu">
             <a href="home.html" class="active">Home</a>
             <a href="index.html">About</a>
-            <a href="login.html">Sign In</a>
-            <a href="register.html">Sign Up</a>
+            <a href="login.html" class="auth-link">Sign In</a>
+            <a href="register.html" class="auth-link">Sign Up</a>
             <a href="contact.html">Contact</a>
             <a href="spongebob_love.html">SpongeBob</a>
         </nav>
     </header>
+
+    <script>
+        // Update UI based on Auth
+        const user = localStorage.getItem('user');
+        if (user) {
+            const userData = JSON.parse(user);
+            const nav = document.getElementById('nav-menu');
+            const authLinks = document.querySelectorAll('.auth-link');
+
+            // Hide Sign In/Up
+            authLinks.forEach(link => link.style.display = 'none');
+
+            // Add Welcome & Logout
+            const welcomeSpan = document.createElement('span');
+            welcomeSpan.style.color = 'var(--primary-color)';
+            welcomeSpan.style.marginRight = '15px';
+            welcomeSpan.style.fontWeight = 'bold';
+            welcomeSpan.textContent = `Welcome, ${userData.username}`;
+
+            const logoutBtn = document.createElement('a');
+            logoutBtn.href = '#';
+            logoutBtn.textContent = 'Logout';
+            logoutBtn.style.color = '#ff4b4b';
+            logoutBtn.onclick = () => {
+                localStorage.removeItem('user');
+                window.location.href = 'login.html';
+            };
+
+            // Insert before Contact
+            nav.insertBefore(welcomeSpan, nav.children[authLinks.length]);
+            nav.insertBefore(logoutBtn, nav.children[authLinks.length + 1]);
+        }
+    </script>
 
     <main class="container">
         <div class="page-header">

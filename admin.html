@@ -167,6 +167,7 @@
         <table class="data-table">
             <thead>
                 <tr>
+                    <th>Photo</th>
                     <th>ID</th>
                     <th>Username</th>
                     <th>Email</th>
@@ -214,8 +215,13 @@
                 const usersBody = document.getElementById('users-table-body');
                 usersBody.innerHTML = '';
                 data.users.forEach(user => {
+                    const photoHtml = user.image
+                        ? `<img src="${user.image}" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">`
+                        : `<div style="width: 40px; height: 40px; border-radius: 50%; background: #333; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-user"></i></div>`;
+
                     const row = `
                         <tr>
+                            <td>${photoHtml}</td>
                             <td>${user.id}</td>
                             <td>${user.username}</td>
                             <td>${user.email}</td>
