@@ -215,6 +215,11 @@
     </footer>
 
     <script>
+        // Check Auth
+        if (!localStorage.getItem('user')) {
+            window.location.href = 'login.html';
+        }
+
         // Track Visit
         fetch('http://localhost:3000/api/visit', { method: 'POST' }).catch(e => console.log('Visit API Error', e));
 

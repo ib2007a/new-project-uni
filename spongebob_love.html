@@ -177,6 +177,12 @@
             }
         });
     </script>
+    <script>
+        // Check Auth
+        if (!localStorage.getItem('user')) {
+            window.location.href = 'login.html';
+        }
+    </script>
 </body>
 
 </html>

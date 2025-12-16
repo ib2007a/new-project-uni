@@ -70,6 +70,9 @@
             const data = await response.json();
 
             if (data.success) {
+                // Save user session
+                localStorage.setItem('user', JSON.stringify(data.user));
+
                 alert('Login Successful! Welcome ' + data.user.username);
                 // Redirect or perform login action
                 window.location.href = 'home.html';

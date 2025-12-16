@@ -196,6 +196,11 @@
     </div>
 
     <script>
+        // Check Auth
+        if (!localStorage.getItem('user')) {
+            window.location.href = 'login.html';
+        }
+
         async function fetchData() {
             try {
                 const response = await fetch('http://localhost:3000/api/admin/data');
