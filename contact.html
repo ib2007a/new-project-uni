@@ -70,5 +70,35 @@
         <p>&copy; 2025 FODOOL. All rights reserved.</p>
     </footer>
 </body>
+<script>
+    document.querySelector('.contact-form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        try {
+            const response = await fetch('http://localhost:3000/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, message })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                alert('Message Sent Successfully!');
+                document.querySelector('.contact-form').reset();
+            } else {
+                alert('Error: ' + data.message);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        }
+    });
+</script>
+</body>
 
 </html>

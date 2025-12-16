@@ -53,5 +53,35 @@
         <p>&copy; 2025 FODOOL. All rights reserved.</p>
     </footer>
 </body>
+<script>
+    document.querySelector('.auth-form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        try {
+            const response = await fetch('http://localhost:3000/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                alert('Login Successful! Welcome ' + data.user.username);
+                // Redirect or perform login action
+                window.location.href = 'home.html';
+            } else {
+                alert('Error: ' + data.message);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        }
+    });
+</script>
+</body>
 
 </html>
