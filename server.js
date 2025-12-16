@@ -33,8 +33,6 @@ const writeJSON = (file, data) => {
 const USERS_FILE = 'users.json';
 const MESSAGES_FILE = 'messages.json';
 
-const LOGINS_FILE = 'logins.json';
-
 // Routes
 
 // 1. Register User
@@ -77,15 +75,6 @@ app.post('/api/login', (req, res) => {
     const user = users.find(u => u.email === email && u.password === password);
 
     if (user) {
-        // Record login
-        const logins = readJSON(LOGINS_FILE);
-        logins.push({
-            username: user.username,
-            email: user.email,
-            timestamp: new Date().toLocaleString()
-        });
-        writeJSON(LOGINS_FILE, logins);
-
         res.json({ success: true, message: 'Login successful', user: { username: user.username, email: user.email } });
     } else {
         res.status(401).json({ success: false, message: 'Invalid credentials' });
@@ -113,13 +102,6 @@ app.post('/api/contact', (req, res) => {
     writeJSON(MESSAGES_FILE, messages);
 
     res.json({ success: true, message: 'Message sent successfully' });
-});
-
-// 4. Admin Data (Fetch all users and logins)
-app.get('/api/admin/data', (req, res) => {
-    const users = readJSON(USERS_FILE);
-    const logins = readJSON(LOGINS_FILE);
-    res.json({ users, logins });
 });
 
 app.listen(PORT, () => {
