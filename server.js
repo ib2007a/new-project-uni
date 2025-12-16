@@ -33,27 +33,29 @@ const writeJSON = (file, data) => {
 const USERS_FILE = 'users.json';
 const MESSAGES_FILE = 'messages.json';
 
+const LOGINS_FILE = 'logins.json';
+
 // Routes
 
 // 1. Register User
 app.post('/api/register', (req, res) => {
     const { username, email, password } = req.body;
-    
+
     if (!username || !email || !password) {
         return res.status(400).json({ success: false, message: 'All fields are required' });
     }
 
     const users = readJSON(USERS_FILE);
-    
+
     // Check if user exists
     if (users.find(u => u.email === email)) {
         return res.status(400).json({ success: false, message: 'User already exists' });
     }
 
-    const newUser = { 
-        id: Date.now(), 
-        username, 
-        email, 
+    const newUser = {
+        id: Date.now(),
+        username,
+        email,
         password // Note: In a real app, hash this!
     };
 
@@ -75,6 +77,15 @@ app.post('/api/login', (req, res) => {
     const user = users.find(u => u.email === email && u.password === password);
 
     if (user) {
+        // Record login
+        const logins = readJSON(LOGINS_FILE);
+        logins.push({
+            username: user.username,
+            email: user.email,
+            timestamp: new Date().toLocaleString()
+        });
+        writeJSON(LOGINS_FILE, logins);
+
         res.json({ success: true, message: 'Login successful', user: { username: user.username, email: user.email } });
     } else {
         res.status(401).json({ success: false, message: 'Invalid credentials' });
@@ -102,6 +113,13 @@ app.post('/api/contact', (req, res) => {
     writeJSON(MESSAGES_FILE, messages);
 
     res.json({ success: true, message: 'Message sent successfully' });
+});
+
+// 4. Admin Data (Fetch all users and logins)
+app.get('/api/admin/data', (req, res) => {
+    const users = readJSON(USERS_FILE);
+    const logins = readJSON(LOGINS_FILE);
+    res.json({ users, logins });
 });
 
 app.listen(PORT, () => {
