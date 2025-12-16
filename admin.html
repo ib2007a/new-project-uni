@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | FODOOL</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .admin-section {
+            padding: 100px 5%;
+            min-height: 100vh;
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+        }
+
+        .dashboard-title h2 {
+            font-size: 2rem;
+            color: #ffcc00; /* SpongeBob yellow accent */
+        }
+
+        .refresh-btn {
+            background: #ffcc00;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .refresh-btn:hover {
+            transform: scale(1.05);
+            background: #e6b800;
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .data-card {
+            background: #2a2a2a;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            color: #ffcc00;
+            font-size: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            color: #ddd;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #444;
+        }
+
+        th {
+            background: #333;
+            color: #fff;
+        }
+
+        tr:hover {
+            background: #333;
+        }
+
+        .password-cell {
+            font-family: monospace;
+            color: #ff6b6b;
+        }
+
+        .time-cell {
+            color: #4ecdc4;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="home.html" class="logo">FODOOL ADMIN</a>
+        <nav class="navigation">
+            <a href="home.html">Back to Site</a>
+        </nav>
+    </header>
+
+    <main class="admin-section">
+        <div class="dashboard-container">
+            <div class="dashboard-header">
+                <div class="dashboard-title">
+                    <h2><i class="fa-solid fa-shield-halved"></i> Security Dashboard</h2>
+                    <p>Monitoring user activity and credentials</p>
+                </div>
+                <button class="refresh-btn" onclick="fetchData()"><i class="fa-solid fa-sync"></i> Refresh Data</button>
+            </div>
+
+            <div class="data-grid">
+                <!-- Users Table -->
+                <div class="data-card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-users"></i>
+                        <h3>Registered Users & Passwords</h3>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Password</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-table-body">
+                            <!-- Data injected here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Logins Table -->
+                <div class="data-card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-history"></i>
+                        <h3>Recent Login Activity</h3>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Email</th>
+                                <th>Login Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="logins-table-body">
+                            <!-- Data injected here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 FODOOL. Confidential Admin Access.</p>
+    </footer>
+
+    <script>
+        async function fetchData() {
+            try {
+                const response = await fetch('http://localhost:3000/api/admin/data');
+                const data = await response.json();
+
+                // Populate Users Table
+                const usersBody = document.getElementById('users-table-body');
+                usersBody.innerHTML = '';
+                data.users.forEach(user => {
+                    const row = `
+                        <tr>
+                            <td>${user.username}</td>
+                            <td>${user.email}</td>
+                            <td class="password-cell">${user.password}</td>
+                        </tr>
+                    `;
+                    usersBody.innerHTML += row;
+                });
+
+                // Populate Logins Table
+                const loginsBody = document.getElementById('logins-table-body');
+                loginsBody.innerHTML = '';
+                // Show latest first
+                data.logins.reverse().forEach(login => {
+                    const row = `
+                        <tr>
+                            <td>${login.username}</td>
+                            <td>${login.email}</td>
+                            <td class="time-cell">${login.timestamp}</td>
+                        </tr>
+                    `;
+                    loginsBody.innerHTML += row;
+                });
+
+            } catch (error) {
+                console.error('Error fetching admin data:', error);
+                alert('Failed to load data. Is the server running?');
+            }
+        }
+
+        // Fetch user password to enter (Simulated security)
+        const secret = prompt("Enter Admin Password:");
+        if (secret === "admin123") {
+            fetchData();
+        } else {
+            document.body.innerHTML = "<h1 style='color:red; text-align:center; margin-top:50px;'>ACCESS DENIED</h1>";
+        }
+    </script>
+</body>
+
+</html>
