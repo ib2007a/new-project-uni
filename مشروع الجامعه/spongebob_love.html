@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    S
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why SpongeBob? | FODOOL</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="spongebob_love.css">
+</head>
+
+<body>
+    <header>
+        <a href="home.html" class="logo">FODOOL</a>
+        <nav class="navigation">
+            <a href="home.html">Home</a>
+            <a href="index.html">About</a>
+            <a href="login.html">Sign In</a>
+            <a href="register.html">Sign Up</a>
+            <a href="contact.html">Contact</a>
+            <a href="spongebob_love.html" class="active">SpongeBob</a>
+        </nav>
+    </header>
+
+    <main class="tribute-section">
+        <div class="tribute-container">
+            <img src="imges/spoange.png" alt="SpongeBob" class="floating-sponge"
+                onerror="this.src='https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/SpongeBob_SquarePants_character.svg/1200px-SpongeBob_SquarePants_character.svg.png'">
+
+            <h1 class="tribute-title">Why I Love SpongeBob</h1>
+
+            <div style="text-align: center; margin-bottom: 30px;">
+                <a href="who_is_really_me.html" class="cta-btn"
+                    style="background: var(--primary-color); padding: 10px 25px; font-size: 1.1rem;">
+                    Who is Really Me?
+                </a>
+            </div>
+
+            <!-- <div class="tribute-content">
+                <p>
+                    SpongeBob SquarePants isn't just a cartoon character; he's a symbol of unshakeable optimism and
+                    kindness.
+                    In a world that can often be cynical, SpongeBob reminds us to find joy in the little things, like
+                    flipping patties or jellyfishing with friends.
+                </p>
+                <p>
+                    I chose him as the theme for this website because his vibrant energy and the colorful world of
+                    Bikini Bottom
+                    perfectly represent the creativity and fun I want to bring to my work. Plus, who doesn't love a good
+                    Krabby Patty?
+                </p>
+            </div> -->
+
+            <!-- قسم الخط الزمني -->
+            <div class="timeline-section">
+                <!-- ٢٠١١: شمال -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="date">December 2011</span>
+                        <p>This was the first time I ever heard about SpongeBob.</p>
+                        <img src="imges/لقطة شاشة 2025-11-30 124932.png" alt="SpongeBob Screenshot"
+                            class="timeline-img interactive-img" id="timelineImg2011">
+                        <audio id="audio2011">
+                            <source src="audio/موسيقة سبونج بوب سكوير بانتس جاهزون يا اطفال 💓😂.mp4" type="audio/mp4">
+                        </audio>
+                    </div>
+                </div>
+
+                <!-- ٢٠١٥: يمين -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="date">January 2015</span>
+                        <p>I first discovered SpongeBob in January 2015. I immediately got attached to the character
+                            and started following his adventures.</p>
+                        <img src="imges/ana1.jpeg" alt="Me and SpongeBob" class="timeline-img"
+                            onerror="this.src='imges/ana.jpeg'">
+                    </div>
+                </div>
+
+                <!-- ٢٠٢٠: شمال (جديد) -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="date">October 2020</span>
+                        <p>COVID-19 period.</p>
+                        <img src="imges/snail.png" alt="Snail" class="timeline-img interactive-img"
+                            id="timelineImg2020">
+                        <audio id="audio2020">
+                            <source src="audio/spongebob-bubble-transition.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </div>
+
+                <!-- ٢٠٢٥: يمين (تغير من الشمال) -->
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="date">December 2025</span>
+                        <p>Here we are in December 2025, and I still love watching the episodes. The only difference is
+                            that now I enjoy sharing the fun with my younger siblings
+                            "And now, I'm excited to watch the new movie 'Search for SquarePants' releasing this month!"
+                        </p>
+                        <img src="imges/2025c.png" alt="SpongeBob 2025" class="timeline-img interactive-img"
+                            id="timelineImg2025">
+                        <audio id="audio2025">
+                            <source src="audio/spongebob-sad-song.mp3" type="audio/mpeg">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+
+            <div class="audio-section">
+                <h3 class="audio-title">Vibes from Bikini Bottom</h3>
+
+                <button id="playSpongeBobMode" class="spongebob-mode-btn">
+                    <i class="fas fa-play"></i> Activate SpongeBob Mode
+                </button>
+
+                <!-- عناصر الصوت المخفية -->
+                <audio id="failSound">
+                    <source src="audio/spongebob-fail.mp3" type="audio/mpeg">
+                </audio>
+                <audio id="bgMusic" loop>
+                    <source src="audio/ytmp3free.cc_spongebob-12th-street.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 FODOOL. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const playBtn = document.getElementById('playSpongeBobMode');
+        const failSound = document.getElementById('failSound');
+        const bgMusic = document.getElementById('bgMusic');
+
+        playBtn.addEventListener('click', () => {
+            // وقف أي صوت شغال دلوقتي
+            failSound.pause();
+            failSound.currentTime = 0;
+            bgMusic.pause();
+            bgMusic.currentTime = 0;
+
+            // شغل صوت الفشل
+            failSound.play().catch(e => console.log("Audio play failed:", e));
+
+            // لما صوت الفشل يخلص، شغل المزيكا الخلفية
+            failSound.onended = () => {
+                bgMusic.play().catch(e => console.log("Audio play failed:", e));
+            };
+        });
+
+        // منطق الصورة التفاعلية (٢٠١١)
+        const img2011 = document.getElementById('timelineImg2011');
+        const audio2011 = document.getElementById('audio2011');
+
+        img2011.addEventListener('click', () => {
+            if (audio2011.paused) {
+                audio2011.play().catch(e => console.log("Audio play failed:", e));
+            } else {
+                audio2011.pause();
+            }
+        });
+
+        // منطق الصورة التفاعلية (٢٠٢٠)
+        const img2020 = document.getElementById('timelineImg2020');
+        const audio2020 = document.getElementById('audio2020');
+
+        img2020.addEventListener('click', () => {
+            // عيد من الأول لو كان شغال عشان تسمع تاني
+            audio2020.currentTime = 0;
+            audio2020.play().catch(e => console.log("Audio play failed:", e));
+        });
+
+        // منطق الصورة التفاعلية (٢٠٢٥)
+        const img2025 = document.getElementById('timelineImg2025');
+        const audio2025 = document.getElementById('audio2025');
+
+        img2025.addEventListener('click', () => {
+            if (audio2025.paused) {
+                audio2025.play().catch(e => console.log("Audio play failed:", e));
+            } else {
+                audio2025.pause();
+            }
+        });
+    </script>
+</body>
+
+</html>

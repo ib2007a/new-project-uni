@@ -1,0 +1,26 @@
+/* Utility Classes */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+.social-start {
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.about-btn {
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    background: var(--primary-color);
+    border: none;
+    color: white;
+}
