@@ -11,10 +11,8 @@ app.use(cors());
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 
-// Serve static files (HTML, CSS, JS, Images)
 app.use(express.static(path.join(__dirname)));
 
-// Helper function to read/write JSON
 const readJSON = (file) => {
     if (!fs.existsSync(file)) return [];
     const data = fs.readFileSync(file);
@@ -29,13 +27,9 @@ const writeJSON = (file, data) => {
     fs.writeFileSync(file, JSON.stringify(data, null, 2));
 };
 
-// Files
 const USERS_FILE = 'users.json';
 const MESSAGES_FILE = 'messages.json';
 
-// Routes
-
-// 1. Register User
 app.post('/api/register', (req, res) => {
     const { username, email, password, image } = req.body;
 
@@ -45,7 +39,6 @@ app.post('/api/register', (req, res) => {
 
     const users = readJSON(USERS_FILE);
 
-    // Check if user exists
     if (users.find(u => u.email === email)) {
         return res.status(400).json({ success: false, message: 'User already exists' });
     }
@@ -54,7 +47,7 @@ app.post('/api/register', (req, res) => {
         id: Date.now(),
         username,
         email,
-        password, // Note: In a real app, hash this!
+        password,
         image: image || null
     };
 
@@ -64,7 +57,6 @@ app.post('/api/register', (req, res) => {
     res.json({ success: true, message: 'Registration successful' });
 });
 
-// 2. Login User
 app.post('/api/login', (req, res) => {
     const { email, password } = req.body;
 
@@ -82,7 +74,6 @@ app.post('/api/login', (req, res) => {
     }
 });
 
-// 3. Contact Form
 app.post('/api/contact', (req, res) => {
     const { name, email, message } = req.body;
 
@@ -105,12 +96,9 @@ app.post('/api/contact', (req, res) => {
     res.json({ success: true, message: 'Message sent successfully' });
 });
 
-// --- Admin Features ---
-
 const LOGINS_FILE = 'logins.json';
 const STATS_FILE = 'statistics.json';
 
-// Updated Login to track history
 app.post('/api/login', (req, res) => {
     const { email, password } = req.body;
 
@@ -122,7 +110,6 @@ app.post('/api/login', (req, res) => {
     const user = users.find(u => u.email === email && u.password === password);
 
     if (user) {
-        // Record Login
         const logins = readJSON(LOGINS_FILE);
         logins.push({
             email: user.email,
@@ -136,7 +123,6 @@ app.post('/api/login', (req, res) => {
     }
 });
 
-// Track Visits
 app.post('/api/visit', (req, res) => {
     let stats = readJSON(STATS_FILE);
     if (!stats.visits) stats = { visits: 0 };
@@ -147,9 +133,7 @@ app.post('/api/visit', (req, res) => {
     res.json({ success: true });
 });
 
-// Admin Data
 app.get('/api/admin/data', (req, res) => {
-    // In a real app, you would verify an admin token here!
     const users = readJSON(USERS_FILE);
     const logins = readJSON(LOGINS_FILE);
     const stats = readJSON(STATS_FILE);

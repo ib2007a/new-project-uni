@@ -27,7 +27,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Header (for About Page if used) */
 header {
     width: 100%;
     position: fixed;
@@ -61,7 +60,6 @@ header {
     color: var(--primary-color);
 }
 
-/* Navigation for Home Page */
 nav {
     display: flex;
     justify-content: center;
@@ -105,7 +103,6 @@ nav {
     width: 100%;
 }
 
-/* Main Content & Hero */
 .main-content {
     min-height: 100vh;
     display: flex;
@@ -135,7 +132,6 @@ nav {
     display: inline-block;
 }
 
-/* Bio Card */
 .bio-card {
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
@@ -197,7 +193,6 @@ nav {
     font-weight: 700;
 }
 
-/* Skills List */
 .skills-list {
     list-style: none;
     margin: 20px 0 30px;
@@ -226,7 +221,6 @@ nav {
     color: var(--secondary-color);
 }
 
-/* Action Area & Buttons */
 .action-area {
     display: flex;
     justify-content: space-between;
@@ -254,7 +248,6 @@ nav {
     box-shadow: 0 5px 15px rgba(58, 134, 255, 0.4);
 }
 
-/* Social Icons */
 .social-icons {
     display: flex;
     gap: 15px;
@@ -279,7 +272,6 @@ nav {
     filter: drop-shadow(0 0 8px var(--primary-color)) drop-shadow(0 0 15px var(--secondary-color));
 }
 
-/* Figures Grid & Cards (Home Page) */
 .container {
     max-width: 1200px;
     margin: 40px auto;
@@ -381,7 +373,6 @@ nav {
     height: 100%;
 }
 
-/* Home Page View Toggle & Slideshow */
 .view-controls {
     display: flex;
     gap: 15px;
@@ -457,14 +448,12 @@ nav {
     transform: scale(1.1);
 }
 
-/* Auth/Register Page Styles */
 .auth-section {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 80vh;
-    /* Ensure full height centering */
 }
 
 .auth-container {
@@ -564,7 +553,6 @@ nav {
     text-decoration: underline;
 }
 
-/* Personality Detail Page Styles */
 .profile-header {
     text-align: center;
     padding: 50px 20px;
@@ -649,7 +637,6 @@ nav {
     color: var(--primary-color);
 }
 
-/* Coffee Spill Effect */
 #coffee-toggle {
     display: none;
 }
@@ -705,7 +692,6 @@ nav {
     }
 }
 
-/* Footer */
 footer {
     text-align: center;
     padding: 20px;
@@ -715,7 +701,6 @@ footer {
     background-color: var(--bg-color);
 }
 
-/* Animations */
 @keyframes fadeInDown {
     from {
         opacity: 0;
@@ -752,7 +737,6 @@ footer {
     }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .title {
         font-size: 2rem;

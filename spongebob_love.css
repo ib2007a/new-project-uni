@@ -1,5 +1,3 @@
-/* SpongeBob Tribute Page Styles */
-
 .tribute-section {
     min-height: 100vh;
     padding: 120px 5% 50px;
@@ -28,7 +26,6 @@
     font-size: 3rem;
     margin-bottom: 20px;
     color: #F7B946;
-    /* SpongeBob Yellow */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     font-weight: 800;
 }
@@ -115,7 +112,6 @@ audio {
     height: 30px;
 }
 
-/* Fun Animation */
 .floating-sponge {
     animation: float 6s ease-in-out infinite;
     margin-bottom: 30px;
@@ -136,7 +132,6 @@ audio {
     }
 }
 
-/* Timeline Styles */
 .timeline-section {
     position: relative;
     max-width: 800px;
@@ -144,7 +139,6 @@ audio {
     padding: 20px 0;
 }
 
-/* The vertical line */
 .timeline-section::after {
     content: '';
     position: absolute;
@@ -167,7 +161,6 @@ audio {
     animation: fadeInUp 0.8s ease backwards;
 }
 
-/* Circles on the timeline */
 .timeline-item::after {
     content: '';
     position: absolute;
@@ -243,7 +236,6 @@ audio {
     border-color: #F7B946;
 }
 
-/* Responsive Timeline */
 @media screen and (max-width: 768px) {
     .timeline-section::after {
         left: 31px;

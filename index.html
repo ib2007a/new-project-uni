@@ -27,10 +27,6 @@
             <div class="bio-card">
                 <h2 class="auth-title" style="margin-bottom: 30px;">Who built this awesome website?</h2>
                 <div class="bio-content">
-                    <!-- <div class="profile-image-container">
-                         Placeholder for profile image if needed, or remove if not used in this design -->
-                    <!-- <img src="imges/profile.png" alt="Profile" class="profile-image">
-                </div> -->
                     <div class="bio-details">
                         <p class="bio-text">
                             Guess what? It was definitely me! 😎
@@ -41,7 +37,7 @@
                             me as <span class="handle">@z7w44</span>.
                         </p>
                         <p class="bio-text">
-                            I’m fueled by an incredible passion for:
+                            I'm fueled by an incredible passion for:
                         </p>
                         <ul class="skills-list">
                             <li><i class="fas fa-code"></i> Coding</li>
@@ -76,12 +72,10 @@
         <p>&copy; 2025 Ibrahim Mohamed. All rights reserved.</p>
     </footer>
     <script>
-        // Check Auth
         if (!localStorage.getItem('user')) {
             window.location.href = 'login.html';
         }
 
-        // Track Visit
         fetch('http://localhost:3000/api/visit', { method: 'POST' }).catch(e => console.log('Visit API Error', e));
     </script>
 </body>
